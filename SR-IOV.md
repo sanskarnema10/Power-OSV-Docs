@@ -453,9 +453,3 @@ On IBM Power, the PF is managed exclusively by the PowerVM hypervisor (HMC). The
 
 ---
 
-## 8. Next Steps / Recommendations
-
-1. **File upstream issue** against `k8snetworkplumbingwg/sriov-network-operator` documenting the IBM Power VF-only detection gap with this evidence
-2. **Test the hypothesis** by patching `supported-nic-ids` to add `"IBM_Power_Nvidia_mlx5_ConnectX-4LX_VF": "15b3 1016 1016"` and observing whether the daemon detects the device
-3. **Fix Go tooling bug** — report `golang.org/x/tools v0.16.1` ppc64le constant expression issue against the Go team or update the operator's Makefile to download pre-built `controller-gen`
-4. **Proceed with manual SR-IOV components** (SR-IOV CNI + Device Plugin without the operator) to test whether KubeVirt VM SR-IOV passthrough works when bypassing the operator's discovery layer
