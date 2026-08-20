@@ -317,6 +317,26 @@ kubectl get -n sriov-network-operator all
 #
 # daemonset.apps/sriov-network-config-daemon    DESIRED:1 READY:1
 # deployment.apps/sriov-network-operator        READY:1/1
+
+On verifying the pod logs:
+
+ kubectl logs -n sriov-network-operator $(kubectl get pod -n sriov-network-operator \
+-l app=sriov-network-config-daemon \
+-o name)
+
+We get the following info:
+2026-08-20T10:28:56.819252755Z  INFO    updateStatusFromHost    daemon/daemon.go:177     Getting host network status
+
+2026-08-20T10:28:56.819268562Z  LEVEL(-2)       baremetal/baremetal.go:56       DiscoverSriovDevices
+
+2026-08-20T10:28:56.867876588Z  INFO    sriovnetwork    sriov/sriov.go:332
+IsSupportedModel(): found unsupported model
+{"vendorId:":"15b3","deviceId:":"1016"}
+
+2026-08-20T10:28:56.867929251Z  INFO    baremetal/baremetal.go:56
+DiscoverSriovDevices(): unsupported device
+{"device":"8002:01:00.0 -> driver: 'mlx5_core' class: 'Network controller' vendor: 'Mellanox Technologies' product: 'MT27710 Family [ConnectX-4 Lx Virtual Function]'"}
+
 ```
 
 ---
