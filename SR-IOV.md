@@ -263,7 +263,7 @@ dmesg | grep -i iommu
 ### 3.7 SR-IOV Network Operator Installation
 
 **Repository:** `https://github.com/k8snetworkplumbingwg/sriov-network-operator`  
-**Version:** `v1.6.0` (latest stable release)
+**Clone:** `git clone https://github.com/k8snetworkplumbingwg/sriov-network-operator` (latest stable release)
 
 **ppc64le image availability verified:**
 ```bash
@@ -290,7 +290,7 @@ All three core images confirmed ppc64le support:
 2. **`kustomize build config/crd` failed:**  
    `config/crd/` directory exists but contains no `kustomization.yaml`. The pre-built CRD yaml files exist in `config/crd/bases/`.
 
-**Resolution — deploy without make:**
+**Resolution — deploy without make(If "make deploy-setup-k8s" fails) :**
 ```bash
 # Install kustomize pre-built binary for ppc64le
 curl -sL "https://github.com/kubernetes-sigs/kustomize/releases/download/kustomize%2Fv5.3.0/kustomize_v5.3.0_linux_ppc64le.tar.gz" \
